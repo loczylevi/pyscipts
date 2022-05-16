@@ -14,6 +14,12 @@
   <input type="text" id="test-input"/>
   <button id="submit-button" type="submit" pys-onClick="my_function">OK</button>
   <div id="test-output"></div>
+  
+  <div class="kozepre">
+  <div>írja be a netmaszk cimet:</div>
+  <input type="text" id="test-input"/>
+  <button id="submit-button" type="submit" pys-onClick="my_function2">OK</button>
+  <div id="test-output"></div>
 
 <py-script>
 from js import console
@@ -35,13 +41,31 @@ def my_function():
     
     return text
 
+def my_function2():
+    #print('args:', args)
+    #print('kwargs:', kwargs)
+    #console.log(f'args: {args}')
+    #console.log(f'kwargs: {kwargs}')
+    #_________________________________________________
+
+    text = Element('test-input').element.value
+
+    #print('text:', text)
+    f = console.log(f'text: {text}')
+
+    Element('test-output').element.innerText = text
+    pyscript.write('test-output', text)
+    
+    return text
+
 p = my_function()
+p2 = my_function()
 print(f"IP cim: {p}")
 
 
-print("IP cim bináris alakja: ")
-
+bekeres = input("IP: ")
 g = p.split(".")
+gg = p2.split(".")
 
 
 #________________________________elso________
@@ -80,7 +104,7 @@ elso_bin.append(e_4)
 elso_bin.append(e_2)
 elso_bin.append(e_1)
 
-print(f" {g[0]} == {elso_bin}")
+#print(f" {g[0]} == {elso_bin}")
 #________________________________masodik________
 
 m_128 = int(g[1]) // 128
@@ -117,7 +141,7 @@ masodik_bin.append(m_4)
 masodik_bin.append(m_2)
 masodik_bin.append(m_1)
 
-print(f" {g[1]} == {masodik_bin}")
+#print(f" {g[1]} == {masodik_bin}")
 #________________________________harmadik________
 
 h_128 = int(g[2]) // 128
@@ -154,7 +178,7 @@ harmadik_bin.append(h_4)
 harmadik_bin.append(h_2)
 harmadik_bin.append(h_1)
 
-print(f" {g[2]} == {harmadik_bin}")
+#print(f" {g[2]} == {harmadik_bin}")
 
 #________________________________negyedik________
 
@@ -192,14 +216,224 @@ negyedik_bin.append(n_4)
 negyedik_bin.append(n_2)
 negyedik_bin.append(n_1)
 
-print(f" {g[3]} == {negyedik_bin}")
-
+#print(f" {g[3]} == {negyedik_bin}")
 elso_bin.extend(masodik_bin)
 elso_bin.extend(harmadik_bin)
 elso_bin.extend(negyedik_bin)
 
 
-print(f"teljes bináris forma: {elso_bin}")
+print(f"teljes bináris forma IP: {elso_bin}")
+
+
+#______________________________________________________________maszk____________________________________________________
+
+
+
+
+#________________________________elso________
+
+n_e_128 = int(gg[0]) // 128
+n_e_m = int(gg[0]) % 128
+
+n_e_64 = n_e_m // 64
+n_e_m2 = n_e_m % 64
+
+n_e_32 = n_e_m2 // 32
+n_e_m3 = n_e_m2 % 32
+
+n_e_16 = n_e_m3 // 16
+n_e_m4 = n_e_m3 % 16
+
+n_e_8 = n_e_m4 // 8
+n_e_m5 = n_e_m4 % 8
+
+n_e_4 = n_e_m5 // 4
+n_e_m6 = n_e_m5 % 4
+
+n_e_2 = n_e_m6 // 2
+n_e_m7 = n_e_m6 % 2
+
+n_e_1 = n_e_m7 // 1
+n_e_m8 = n_e_m7 % 1
+
+n_elso_bin = []
+n_elso_bin.append(n_e_128)
+n_elso_bin.append(n_e_64)
+n_elso_bin.append(n_e_32)
+n_elso_bin.append(n_e_16)
+n_elso_bin.append(n_e_8)
+n_elso_bin.append(n_e_4)
+n_elso_bin.append(n_e_2)
+n_elso_bin.append(n_e_1)
+
+#print(f" {gg[0]} == {n_elso_bin}")
+#________________________________masodik________
+
+n_m_128 = int(gg[1]) // 128
+n_m_m = int(gg[1]) % 128
+
+n_m_64 = n_m_m // 64
+n_m_m2 = n_m_m % 64
+
+n_m_32 = n_m_m2 // 32
+n_m_m3 = n_m_m2 % 32
+
+n_m_16 = n_m_m3 // 16
+n_m_m4 = n_m_m3 % 16
+
+n_m_8 = n_m_m4 // 8
+n_m_m5 = n_m_m4 % 8
+
+n_m_4 = n_m_m5 // 4
+n_m_m6 = n_m_m5 % 4
+
+n_m_2 = n_m_m6 // 2
+n_m_m7 = n_m_m6 % 2
+
+n_m_1 = n_m_m7 // 1
+n_m_m8 = n_m_m7 % 1
+
+n_masodik_bin = []
+n_masodik_bin.append(n_m_128)
+n_masodik_bin.append(n_m_64)
+n_masodik_bin.append(n_m_32)
+n_masodik_bin.append(n_m_16)
+n_masodik_bin.append(n_m_8)
+n_masodik_bin.append(n_m_4)
+n_masodik_bin.append(n_m_2)
+n_masodik_bin.append(n_m_1)
+
+#print(f" {gg[1]} == {n_masodik_bin}")
+#________________________________harmadik________
+
+n_h_128 = int(gg[2]) // 128
+n_h_m = int(gg[2]) % 128
+
+n_h_64 = n_h_m // 64
+n_h_m2 = n_h_m % 64
+
+n_h_32 = n_h_m2 // 32
+n_h_m3 = n_h_m2 % 32
+
+n_h_16 = n_h_m3 // 16
+n_h_m4 = n_h_m3 % 16
+
+n_h_8 = n_h_m4 // 8
+n_h_m5 = n_h_m4 % 8
+
+n_h_4 = n_h_m5 // 4
+n_h_m6 = n_h_m5 % 4
+
+n_h_2 = n_h_m6 // 2
+n_h_m7 = n_h_m6 % 2
+
+n_h_1 = n_h_m7 // 1
+n_h_m8 = n_h_m7 % 1
+
+n_harmadik_bin = []
+n_harmadik_bin.append(n_h_128)
+n_harmadik_bin.append(n_h_64)
+n_harmadik_bin.append(n_h_32)
+n_harmadik_bin.append(n_h_16)
+n_harmadik_bin.append(n_h_8)
+n_harmadik_bin.append(n_h_4)
+n_harmadik_bin.append(n_h_2)
+n_harmadik_bin.append(n_h_1)
+
+#print(f" {gg[2]} == {n_harmadik_bin}")
+
+#________________________________negyedik________
+
+n_n_128 = int(gg[3]) // 128
+n_n_m = int(gg[3]) % 128
+
+n_n_64 = n_n_m // 64
+n_n_m2 = n_n_m % 64
+
+n_n_32 = n_n_m2 // 32
+n_n_m3 = n_n_m2 % 32
+
+n_n_16 = n_n_m3 // 16
+n_n_m4 = n_n_m3 % 16
+
+n_n_8 = n_n_m4 // 8
+n_n_m5 = n_n_m4 % 8
+
+n_n_4 = n_n_m5 // 4
+n_n_m6 = n_n_m5 % 4
+
+n_n_2 = n_n_m6 // 2
+n_n_m7 = n_n_m6 % 2
+
+n_n_1 = n_n_m7 // 1
+n_n_m8 = n_n_m7 % 1
+
+n_negyedik_bin = []
+n_negyedik_bin.append(n_n_128)
+n_negyedik_bin.append(n_n_64)
+n_negyedik_bin.append(n_n_32)
+n_negyedik_bin.append(n_n_16)
+n_negyedik_bin.append(n_n_8)
+n_negyedik_bin.append(n_n_4)
+n_negyedik_bin.append(n_n_2)
+n_negyedik_bin.append(n_n_1)
+
+
+n_elso_bin.extend(n_masodik_bin)
+n_elso_bin.extend(n_harmadik_bin)
+n_elso_bin.extend(n_negyedik_bin)
+
+#print(f" {gg[3]} == {n_negyedik_bin}")
+
+print(f"teljes bináris forma netmaszk: {n_elso_bin}")
+
+
+#print(elso_bin)
+#print(n_elso_bin)
+
+
+"""
+for sor in elso_bin:
+    for sor1 in n_elso_bin:
+        if sor == '1' or sor1 == '1':
+            alhalozati.append(sor)
+        if sor == '0' or sor1 == '0':
+            host_cim.append(sor)
+
+
+"""
+bites_forma_ip = ""
+bites_forma_netmaszk = ""
+for szam in elso_bin:
+    bites_forma_ip = str(szam) + bites_forma_ip
+    
+for szam in n_elso_bin:
+    bites_forma_netmaszk = str(szam) + bites_forma_netmaszk
+
+#print(f"hoszt cim: {host_cim}")
+#print(f"alhálozati cim: {alhalozati_cim}")
+
+
+#print(bites_forma_ip)
+#print(bites_forma_netmaszk)
+
+szamlalo_0 = 0
+szamlalo_1 = 0
+alhalozati_cim = ""
+host_cim = ""
+for szam in bites_forma_netmaszk:
+    if szam == '0':
+        szamlalo_0 = szamlalo_0 + 1
+        host_cim = szam + host_cim
+    else:
+        szamlalo_1 = szamlalo_1 + 1
+        alhalozati_cim = szam + alhalozati_cim
+
+print(f"Host: ennyi 0: {szamlalo_0} db.\nHost: {host_cim}")
+print(f"Alhálozati: ennyi 1: {szamlalo_1} db. \nAlhálózati: {alhalozati_cim}")
+
+
+
 
 
 

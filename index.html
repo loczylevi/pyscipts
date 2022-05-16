@@ -11,55 +11,55 @@
 <body>
 <div class="kozepre">
   <div>írja be az IP cimet:</div>
-  <input type="text" id="test-input"/>
-  <button id="submit-button" type="submit" pys-onClick="my_function">OK</button>
-  <div id="test-output"></div>
+  <input type="text" id="ip-cim"/>
+  <button id="submit-button" type="submit" pys-onClick="ip">OK</button>
+  <div id="ip_out"></div>
   
   <div class="kozepre">
   <div>írja be a netmaszk cimet:</div>
-  <input type="text" id="test-input"/>
-  <button id="submit-button" type="submit" pys-onClick="my_function2">OK</button>
-  <div id="test-output"></div>
+  <input type="text" id="net-maszk"/>
+  <button id="submit-button" type="submit" pys-onClick="netmaszk">OK</button>
+  <div id="netmaszk_out"></div>
 
 <py-script>
 from js import console
 
-def my_function():
+def ip(ip-cim):
     #print('args:', args)
     #print('kwargs:', kwargs)
     #console.log(f'args: {args}')
     #console.log(f'kwargs: {kwargs}')
     #_________________________________________________
 
-    text = Element('test-input').element.value
+    text = Element('ip').element.value
 
     #print('text:', text)
     f = console.log(f'text: {text}')
 
-    Element('test-output').element.innerText = text
-    pyscript.write('test-output', text)
+    Element('ip_out').element.innerText = text
+    pyscript.write('ip_out', text)
     
     return text
 
-def my_function2():
+def netmaszk(net-maszk):
     #print('args:', args)
     #print('kwargs:', kwargs)
     #console.log(f'args: {args}')
     #console.log(f'kwargs: {kwargs}')
     #_________________________________________________
 
-    text = Element('test-input').element.value
+    text = Element('net-maszk').element.value
 
     #print('text:', text)
     f = console.log(f'text: {text}')
 
-    Element('test-output').element.innerText = text
-    pyscript.write('test-output', text)
+    Element('netmaszk_out').element.innerText = text
+    pyscript.write('netmaszk_out', text)
     
     return text
 
-p = my_function()
-p2 = my_function()
+p = ip()
+p2 = netmaszk()
 print(f"IP cim: {p}")
 
 

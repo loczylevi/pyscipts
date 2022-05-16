@@ -502,5 +502,14 @@ for sor in elso_bin:
 for sor in n_elso_bin:
     jo_bites_maszk = jo_bites_maszk + str(sor)
     
-print(jo_bites_ip)
+
+alhalozati_cim11 = ""
+host_cim11 = "" 
+for maszk in jo_bites_maszk:
+    for ip in jo_bites_ip:
+        if maszk == '1':
+            alhalozati_cim11 = alhalozati_cim11 + ip
+        else:
+            host_cim11 = host_cim11 + ip
+
 
